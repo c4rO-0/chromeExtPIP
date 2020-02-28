@@ -6,11 +6,16 @@ if (!document.pictureInPictureEnabled) {
   chrome.browserAction.setTitle({ title: 'Picture-in-Picture NOT supported' });
 } else {
   chrome.browserAction.onClicked.addListener(tab => {
-    targetTab = tab
+    if(targetTab&&targetTab.id!==tab.id){
+      chrome.tabs.executeScript(targetTab.id,{code:"observerVideo.disconnect();for(video of document.querySelectorAll('video')){video.pause();document.exitPictureInPicture()}", allFrames:true})
+    }
     chrome.tabs.executeScript({ file: 'script.js', allFrames: true });
+    targetTab = tab
   });
 }
-
+/**
+ * initialize settings
+ */
 chrome.storage.local.get({ time: 5, volume: 5, play: false }, result => {
   time = result.time
   volume = result.volume / 100
@@ -18,6 +23,9 @@ chrome.storage.local.get({ time: 5, volume: 5, play: false }, result => {
   // console.log(volume)
 })
 
+/**
+ * update settings
+ */
 chrome.storage.onChanged.addListener((change, namespace) => {
   chrome.storage.local.get(result => {
     time = result.time
