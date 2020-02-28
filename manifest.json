@@ -8,7 +8,6 @@
     "128": "assets/icon128.png"
   },
   "background": {
-    "persistent": false,
     "scripts": ["background.js"]
   },
   "browser_action": {
