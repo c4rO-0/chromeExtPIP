@@ -5,17 +5,26 @@ let play = null
 if (!document.pictureInPictureEnabled) {
   chrome.browserAction.setTitle({ title: 'Picture-in-Picture NOT supported' });
 } else {
-  chrome.browserAction.onClicked.addListener(tab => {
+  chrome.browserAction.onClicked.addListener(async tab => {
     if(targetTab&&targetTab.id!==tab.id){
-      chrome.tabs.executeScript(targetTab.id,{code:"observerVideo.disconnect();for(video of document.querySelectorAll('video')){video.pause();document.exitPictureInPicture()}", allFrames:true})
+      await chrome.tabs.executeScript(targetTab.id,{code:"(async ()=>{observerVideo.disconnect();for(video of document.querySelectorAll('video')){await document.exitPictureInPicture();video.pause();}})();", allFrames:true})
     }
-    chrome.tabs.executeScript({ file: 'script.js', allFrames: true });
+    await chrome.tabs.executeScript({ file: 'script.js', allFrames: true });
     targetTab = tab
   });
 }
 /**
- * initialize settings
+ * default settings
  */
+chrome.storage.local.set({
+  time: 5,
+  volume: 5,
+  play: true,
+  auto: true,
+  pause: true,
+  list: true
+})
+
 chrome.storage.local.get({ time: 5, volume: 5, play: false }, result => {
   time = result.time
   volume = result.volume / 100
@@ -86,17 +95,17 @@ chrome.tabs.query({}, tabs => {
 /**
  * disable when loading
  */
-chrome.tabs.onActivated.addListener((info)=>{
-  console.log("tab changed")
-  console.log(info)
-  chrome.tabs.get(info.tabId, (tab)=>{
-    console.log(tab)
-    if(tab.status !== "complete"){
-      console.log("disabling in loading")
-      chrome.browserAction.disable(tab.id)
-    }
-  })
-})
+// chrome.tabs.onActivated.addListener((info)=>{
+//   console.log("tab changed")
+//   console.log(info)
+//   chrome.tabs.get(info.tabId, (tab)=>{
+//     console.log(tab)
+//     if(tab.status !== "complete"){
+//       console.log("disabling in loading")
+//       chrome.browserAction.disable(tab.id)
+//     }
+//   })
+// })
 
 /**
  * disable after complete
