@@ -67,7 +67,8 @@ chrome.tabs.query({}, tabs => {
   for (tab of tabs) {
     if (tab.status === "complete" && tab.url && !tab.url.startsWith("https://chrome.google.com/webstore")) {
       console.log("enale")
-    } else {
+      chrome.browserAction.enable(tab.id)
+  } else {
       console.log("disabling")
       chrome.browserAction.disable(tab.id)
     }
@@ -95,8 +96,9 @@ chrome.tabs.onActivated.addListener((info)=>{
 chrome.tabs.onUpdated.addListener((tabId, info, tab) => {
   console.log(info)
   console.log(tab)
-  if (JSON.stringify(info) === JSON.stringify({ status: "complete" }) && tab.url && !tab.url.startsWith("https://chrome.google.com/webstore")) {
+  if (tab.url && !tab.url.startsWith("https://chrome.google.com/webstore")) {
     console.log("enable")
+    chrome.browserAction.enable(tabId)
   } else {
     console.log("disabling")
     chrome.browserAction.disable(tabId)

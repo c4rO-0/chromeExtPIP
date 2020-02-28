@@ -1,4 +1,4 @@
-chrome.storage.local.get({ time: 5, volume: 5, play: false, list: false }, results => {
+chrome.storage.local.get({ time: 5, volume: 5, play: true, list: false }, results => {
   const targetTime = document.querySelector('#time')
   const targetVolume = document.querySelector('#volume')
   const targetPlay = document.querySelector('#play')
