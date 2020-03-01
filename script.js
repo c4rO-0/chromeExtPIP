@@ -62,8 +62,10 @@ var pause
         videoUrl = _video.src
         console.log("video address changed")
         if (document.pictureInPictureElement) {
-          document.exitPictureInPicture()
-          _video.requestPictureInPicture()
+          document.exitPictureInPicture().then(()=>{
+            _video.requestPictureInPicture()
+          })
+          
         }
         // console.log("videoUrl:"+videoUrl)
         // console.log("video.src:"+_video.src)
