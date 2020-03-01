@@ -6,7 +6,7 @@
 * chrome 商店（还没有）
 
 ## 设置
-安装完成后，请务必在 chrome://extensions/shortcuts 页面中将所有快捷键手动设置为全局。
+安装完成后，请务必在 [chrome://extensions/shortcuts](chrome://extensions/shortcuts) 页面中将所有快捷键手动设置为全局。
 
 chrome 插件限制最多4个快捷键，不够用，所以需要按键复用。
 
