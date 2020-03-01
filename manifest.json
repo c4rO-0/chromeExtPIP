@@ -2,7 +2,7 @@
 "update_url": "https://clients2.google.com/service/update2/crx",
 
   "name": "小窗口视频 Picture-in-Picture Extension",
-  "description": "tampermonkey脚本，小窗口视频的插件版；Watch video using Picture-in-Picture",
+  "description": "原tampermonkey脚本——小窗口视频，的插件版；Watch video using Picture-in-Picture",
   "version": "0.1",
   "icons": {
     "128": "assets/icon128.png"
@@ -18,7 +18,7 @@
   },
   "commands": {
     "left": {
-      "description": "left",
+      "description": "backward",
       "suggested_key": {
         "windows": "Ctrl+Left",
         "mac": "Command+Left",
@@ -27,7 +27,7 @@
       }
     },
     "right": {
-      "description": "right",
+      "description": "forward",
       "suggested_key": {
         "windows": "Ctrl+Right",
         "mac": "Command+Right",
@@ -36,7 +36,7 @@
       }
     },
     "up": {
-      "description": "up",
+      "description": "play pause/volume up",
       "suggested_key": {
         "windows": "Ctrl+Up",
         "mac": "Command+Up",
@@ -45,7 +45,7 @@
       }
     },
     "down": {
-      "description": "down",
+      "description": "play pause/volume down",
       "suggested_key": {
         "windows": "Ctrl+Down",
         "mac": "Command+Down",
