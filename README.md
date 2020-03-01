@@ -3,7 +3,7 @@
 ## 安装
 - 商店 : 暂无
 - 安装包 : ![GitHub release (latest by date)](https://img.shields.io/github/v/release/c4rO-0/chromeExtPIP?style=flat-square)
-- 体验版安装包 : ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/c4rO-0/chromeExtPIP?include_prereleases&style=flat-square)
+- 体验版安装包 : [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/c4rO-0/chromeExtPIP?include_prereleases&style=flat-square)](https://github.com/c4rO-0/chromeExtPIP/releases/latest)
 - 开发者: 下载整个项目, 导入文件夹
 
 ## 设置
