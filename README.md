@@ -1,9 +1,10 @@
 # chromeExtPIP
 
 ## 安装
-* 开发模式，直接导入文件夹
-* .crx 文件（还没有）
-* chrome 商店（还没有）
+- 商店 : 暂无
+- 安装包 : ![GitHub release (latest by date)](https://img.shields.io/github/v/release/c4rO-0/chromeExtPIP?style=flat-square)
+- 体验版安装包 : ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/c4rO-0/chromeExtPIP?include_prereleases&style=flat-square)
+- 开发者: 下载整个项目, 导入文件夹
 
 ## 设置
 安装完成后，请务必在 [chrome://extensions/shortcuts](chrome://extensions/shortcuts) 页面中将所有快捷键手动设置为全局。
