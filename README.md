@@ -29,6 +29,6 @@ chrome 插件限制最多4个快捷键，不够用，所以需要按键复用。
 
 已知支持该技术浏览器：
 - chrome 桌面正式版71及以上
-- firefox抢先体验版
+- [firefox抢先体验版](https://support.mozilla.org/en-US/kb/about-picture-picture-firefox)
 
 其他浏览器的支持情况未知。
