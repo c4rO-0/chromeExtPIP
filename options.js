@@ -23,3 +23,7 @@ chrome.storage.local.get({ time: 5, volume: 5, play: true, auto: true, pause: fa
     })
   })
 })
+
+document.querySelector('#shortcut').addEventListener('click',()=>{
+  chrome.tabs.create({url: 'chrome://extensions/shortcuts', active: true});
+})
