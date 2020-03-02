@@ -1,0 +1,41 @@
+{
+    "appName": {
+        "message": "小窗口视频 by c4r"
+    },
+    "appDescription": {
+        "message": "原油猴脚本“小窗口视频”的超级增强版，https://greasyfork.org/en/scripts/377497-%E5%B0%8F%E7%AA%97%E5%8F%A3%E8%A7%86%E9%A2%91-bili-mgtv-youtube"
+    },
+    "backward": {
+        "message": "后退"
+    },
+    "forward": {
+        "message": "前进"
+    },
+    "volumeUp": {
+        "message": "音量增"
+    },
+    "volumeDown": {
+        "message": "音量减"
+    },
+    "playPause": {
+        "message": "播放暂停"
+    },
+    "ff_fb": {
+        "message": "前进/后退间隔: "
+    },
+    "sec": {
+        "message": "秒"
+    },
+    "up_down": {
+        "message": "音量增减间隔: "
+    },
+    "list": {
+        "message": "播放列表时不退出小窗口"
+    },
+    "shortcut": {
+        "message": "快捷键设置"
+    },
+    "ok": {
+        "message": "确定"
+    }
+}

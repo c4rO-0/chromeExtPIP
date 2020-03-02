@@ -8,12 +8,12 @@
   <div style="display: flex;">
     <div style="flex: 0 0 auto;">
       <div style="margin:1rem;">
-        <label for="name">forward/backward: </label>
-        <input type="number" id="time" name="time" min="1" value="5" style="width: 3rem;text-align: center;"><label>
+        <label class="i18n" title="ff_fb" for="name">forward/backward: </label>
+        <input type="number" id="time" name="time" class="i18n" title="sec" min="1" value="5" style="width: 3rem;text-align: center;"><label>
           second(s)</label>
       </div>
       <div style="margin: 1rem;">
-        <label for="volume">volume up/down: </label>
+        <label class="i18n" title="up_down" for="volume">volume up/down: </label>
         <input type="number" id="volume" name="volume" min="1" value="5" style="width: 3rem;text-align: center;"><label>
           %</label>
       </div>
@@ -25,21 +25,21 @@
         <label for="pause">pause video after leaving pip: </label>
         <input type="checkbox" id="pause" name="pause">
       </div> -->
-      <div style="margin: 1rem;">
+      <!-- <div style="margin: 1rem;">
         <label for="play">use up/down as play/pause button: </label>
         <input type="checkbox" id="play" name="play">
-      </div>
+      </div> -->
       <div style="margin: 1rem;">
-        <label for="list">keep in pip when play list: </label>
+        <label for="list" class="i18n" title="list">keep in pip when play list: </label>
         <input type="checkbox" id="list" name="list">
       </div>
 
       <div style="margin: 1rem;">
-        <button id='shortcut'>shortcut settings</button>
+        <button id='shortcut' class="i18n" title="shortcut">shortcut settings</button>
       </div>
     </div>
-    <div style="flex: 0 0 auto; align-items: flex-end; display: flex;">
-      <input type="button" id="ok" value="ok" style="margin: 1rem; width: 5rem; height: 3rem;">
+    <div style="flex: 0 0 auto; align-items: flex-end; display: flex; margin: 1rem;">
+      <button id="ok" class="i18n" title="ok" style="width: 5rem; height: 3rem;"></button>
     </div>
   </div>
   <script src="options.js"></script>

@@ -1,0 +1,41 @@
+{
+    "appName": {
+        "message": "Picture-in-Picture Extension by c4r"
+    },
+    "appDescription": {
+        "message": "WebExtension version of one of our tampermonkey script, https://greasyfork.org/en/scripts/377497-%E5%B0%8F%E7%AA%97%E5%8F%A3%E8%A7%86%E9%A2%91-bili-mgtv-youtube"
+    },
+    "backward": {
+        "message": "backward"
+    },
+    "forward": {
+        "message": "forward"
+    },
+    "volumeUp": {
+        "message": "volume up"
+    },
+    "volumeDown": {
+        "message": "volume down"
+    },
+    "playPause": {
+        "message": "play and pause"
+    },
+    "ff_fb": {
+        "message": "forward / backward: "
+    },
+    "sec": {
+        "message": "second(s)"
+    },
+    "up_down": {
+        "message": "volume up / down: "
+    },
+    "list": {
+        "message": "keep in pip when playing list: "
+    },
+    "shortcut": {
+        "message": "go to shortcut settings"
+    },
+    "ok": {
+        "message": "ok"
+    }
+}

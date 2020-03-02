@@ -1,7 +1,6 @@
 let targetTab = null
 let time = null
 let volume = null
-let play = null
 if (!document.pictureInPictureEnabled) {
   chrome.browserAction.setTitle({ title: 'Picture-in-Picture NOT supported' });
 } else {
@@ -20,16 +19,14 @@ if (!document.pictureInPictureEnabled) {
 chrome.storage.local.set({
   time: 5,
   volume: 5,
-  play: true,
   auto: true,
   pause: true,
   list: true
 })
 
-chrome.storage.local.get({ time: 5, volume: 5, play: false }, result => {
+chrome.storage.local.get({ time: 5, volume: 5}, result => {
   time = result.time
   volume = result.volume / 100
-  play = result.play
   // console.log(volume)
 })
 
@@ -40,7 +37,6 @@ chrome.storage.onChanged.addListener((change, namespace) => {
   chrome.storage.local.get(result => {
     time = result.time
     volume = result.volume / 100
-    play = result.play
     // console.log(volume)
   })
 })
@@ -50,29 +46,23 @@ chrome.commands.onCommand.addListener(cmd => {
     console.log(result.targetTabId)
     // console.log(time)
     // console.log(volume)
-    console.log(play)
     console.log(cmd)
     if (targetTab != null) {
       switch (cmd) {
-        case "right":
+        case "forward":
           chrome.tabs.executeScript(result.targetTabId, { code: "try{document.getElementsByTagName('video')[0].currentTime+=" + time + "}catch(err){}", allFrames: true })
           break
-        case "left":
+        case "backward":
           chrome.tabs.executeScript(result.targetTabId, { code: "try{document.getElementsByTagName('video')[0].currentTime-=" + time + "}catch(err){}", allFrames: true })
           break
-        case "up":
-          if (play) {
-            chrome.tabs.executeScript(result.targetTabId, { code: "try{if(document.getElementsByTagName('video')[0].paused){document.getElementsByTagName('video')[0].play()}else{document.getElementsByTagName('video')[0].pause()}}catch(err){}", allFrames: true })
-          } else {
-            chrome.tabs.executeScript(result.targetTabId, { code: "try{document.getElementsByTagName('video')[0].volume+=" + volume + "}catch(err){}", allFrames: true })
-          }
+        case "volumeUp":
+          chrome.tabs.executeScript(result.targetTabId, { code: "try{document.getElementsByTagName('video')[0].volume+=" + volume + "}catch(err){}", allFrames: true })
           break
-        case "down":
-          if (play) {
-            chrome.tabs.executeScript(result.targetTabId, { code: "try{if(document.getElementsByTagName('video')[0].paused){document.getElementsByTagName('video')[0].play()}else{document.getElementsByTagName('video')[0].pause()}}catch(err){}", allFrames: true })
-          } else {
-            chrome.tabs.executeScript(result.targetTabId, { code: "try{document.getElementsByTagName('video')[0].volume-=" + volume + "}catch(err){}", allFrames: true })
-          }
+        case "volumeDown":
+          chrome.tabs.executeScript(result.targetTabId, { code: "try{document.getElementsByTagName('video')[0].volume-=" + volume + "}catch(err){}", allFrames: true })
+          break
+        case "play":
+          chrome.tabs.executeScript(result.targetTabId, { code: "try{if(document.getElementsByTagName('video')[0].paused){document.getElementsByTagName('video')[0].play()}else{document.getElementsByTagName('video')[0].pause()}}catch(err){}", allFrames: true })
           break
       }
     }
