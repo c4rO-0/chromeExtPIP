@@ -8,7 +8,7 @@
 
 该插件可以在视频变动后自动加载. 并且配合全局快捷键可实现方便地调整进度条.
 
-![](./assets/readme/view.png)
+![](./readme/view.png)
 
 ## 技术说明
 
@@ -27,13 +27,13 @@
 ### 安装包 
 
 - 通过点击[![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/c4rO-0/chromeExtPIP?include_prereleases&style=flat-square)](https://github.com/c4rO-0/chromeExtPIP/releases/latest)找到最新版本, 并保存zip文件到本地.
-![](./assets/readme/ins_step1.png)
+![](./readme/ins_step1.png)
 
 - 打开Chrome扩展管理页面. 地址栏输入 : [chrome://extensions](chrome://extensions). 并确保开发者模式已开启.
-![](./assets/readme/ins_step2.png)
+![](./readme/ins_step2.png)
 
 - 将下载的zip文件拖拽到浏览器页面里. 安装完成.
-![](./assets/readme/ins_step3.png)
+![](./readme/ins_step3.png)
 
 
 ## 设置
@@ -55,11 +55,11 @@
 * 音量增：Ctrl + ↑，Global
 * 音量减：Ctrl + ↓，Global
 
-![](./assets/readme/set_step1.png)
+![](./readme/set_step1.png)
 
 ### 一般设置
 在工具栏右击插件图标, 选择`选项`可打开插件设置界面.
-![](./assets/readme/set_step2.png)
+![](./readme/set_step2.png)
 
 **设置页内各项目：**
 
