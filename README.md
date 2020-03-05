@@ -52,11 +52,11 @@
 - 如果想全局使用快捷键控制小窗口, **需要选择全局**
 
 快捷键推荐设置：
-* 前进：Ctrl + →, Global
-* 后退：Ctrl + ←, Global
-* 播放暂停：Ctrl + Space, Global
-* 音量增：Ctrl + ↑, Global
-* 音量减：Ctrl + ↓, Global
+* 前进：Ctrl + →, 全局
+* 后退：Ctrl + ←, 全局
+* 播放暂停：Ctrl + Space, 全局
+* 音量增：Ctrl + ↑, 全局
+* 音量减：Ctrl + ↓, 全局
 
 ![](./readme/set_step1.png)
 

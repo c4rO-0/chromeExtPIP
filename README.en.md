@@ -26,17 +26,17 @@ other browsers are unknown.
 
 ## Installation
 
-### Application Store : not available
+### Application Store : not available yet
 ### Installation Package
 
 - Click [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/c4rO-0/chromeExtPIP?include_prereleases&style=flat-square)](https://github.com/c4rO-0/chromeExtPIP/releases/latest) to get the latest release, and download the zip package to local.
-![](./readme/ins_step1.png)
+![](./readme/ins_step1_en.png)
 
 - Open Chrome Extension Manager. Url address is : [chrome://extensions](chrome://extensions). Make sure the developer mod opening.
-![](./readme/ins_step2.png)
+![](./readme/ins_step2_en.png)
 
 - Drag the downloaded zip file to the browser page. Done!
-![](./readme/ins_step3.png)
+![](./readme/ins_step3_en.png)
 
 
 ## Settings
@@ -58,11 +58,11 @@ Recommended Settings:
 * volume up：Ctrl + ↑, Global
 * volume down：Ctrl + ↓, Global
 
-![](./readme/set_step1.png)
+![](./readme/set_step1_en.png)
 
 ### Options
 Right-click the extension icon in the toolbar and select `option` to open the Option Page.
-![](./readme/set_step2.png)
+![](./readme/set_step2_en.png)
 
 **Content in option page：**
 
