@@ -5,12 +5,12 @@ if (!document.pictureInPictureEnabled) {
   chrome.browserAction.setTitle({ title: 'Picture-in-Picture NOT supported' });
 } else {
   chrome.browserAction.onClicked.addListener(async tab => {
-    if(targetTab&&targetTab.id!==tab.id){
-      await chrome.tabs.executeScript(targetTab.id,{code:"(async ()=>{observerVideo.disconnect();for(video of document.querySelectorAll('video')){await document.exitPictureInPicture();video.pause();}})();", allFrames:true})
+    if (targetTab && targetTab.id !== tab.id) {
+      await chrome.tabs.executeScript(targetTab.id, { code: "(async ()=>{observerVideo.disconnect();for(video of document.querySelectorAll('video')){await document.exitPictureInPicture();video.pause();}})();", allFrames: true })
     }
     await chrome.tabs.executeScript({ file: 'script.js', allFrames: true });
     targetTab = tab
-    chrome.storage.local.set({targetTabId: tab.id})
+    chrome.storage.local.set({ targetTabId: tab.id })
   });
 }
 /**
@@ -24,7 +24,7 @@ chrome.storage.local.set({
   list: true
 })
 
-chrome.storage.local.get({ time: 5, volume: 5}, result => {
+chrome.storage.local.get({ time: 5, volume: 5 }, result => {
   time = result.time
   volume = result.volume / 100
   // console.log(volume)
@@ -42,7 +42,7 @@ chrome.storage.onChanged.addListener((change, namespace) => {
 })
 
 chrome.commands.onCommand.addListener(cmd => {
-  chrome.storage.local.get(["targetTabId"], result=>{
+  chrome.storage.local.get(["targetTabId"], result => {
     console.log(result.targetTabId)
     // console.log(time)
     // console.log(volume)
@@ -78,7 +78,7 @@ chrome.tabs.query({}, tabs => {
     if (tab.status === "complete" && tab.url && !tab.url.startsWith("https://chrome.google.com/webstore")) {
       console.log("enale")
       chrome.browserAction.enable(tab.id)
-  } else {
+    } else {
       console.log("disabling")
       chrome.browserAction.disable(tab.id)
     }
