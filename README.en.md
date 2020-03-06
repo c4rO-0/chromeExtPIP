@@ -8,9 +8,9 @@
 
 ---
 
-The extension allows video to hover on the desktop as a small window, allowing work and entertainment at the same time.
+The extension allows video to hover on the desktop as a small window.
 
-This extension can be automatically loaded after the video changes, and can adjust the progress bar easily with the global shortcut key.
+This extension can be automatically loaded after the video changes, and can adjust the play progress easily with the global shortcut key.
 
 ![](./readme/view.png)
 
@@ -43,7 +43,7 @@ other browsers are unknown.
 
 ### Shortcut Settings
 
-**Chrome extension is installed with a default limit of up to 4 shortcuts. You could set it manually for fully experience.**
+**Chrome extension is installed with a default limit of up to 4 shortcuts. You could add more shortcuts manually for fully experience.**
 
 - Page for shortcut settings : url address is [chrome://extensions/shortcuts](chrome://extensions/shortcuts) 
 
