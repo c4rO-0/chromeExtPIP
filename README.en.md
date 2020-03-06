@@ -1,5 +1,7 @@
 # chromeExtPIP
 
+![GitHub All Releases](https://img.shields.io/github/downloads/c4rO-0/chromeExtPIP/total?label=Downloads&style=flat-square)
+
 ---
 
 [简体中文](./README.md), [繁體中文](./README.zh-tw.md), [English](./README.en.md)
