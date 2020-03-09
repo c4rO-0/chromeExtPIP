@@ -1,6 +1,6 @@
 # chromeExtPIP
 
-[![GitHub All Releases](https://img.shields.io/github/downloads/c4rO-0/chromeExtPIP/total?label=Downloads&style=flat-square)](https://github.com/c4rO-0/chromeExtPIP/blob/master/README.md#%E5%AE%89%E8%A3%85)
+[![GitHub All Releases](https://img.shields.io/github/downloads/c4rO-0/chromeExtPIP/total?label=Downloads&style=flat-square)](https://github.com/c4rO-0/chromeExtPIP#%E5%AE%89%E8%A3%85)
 
 ---
 
