@@ -68,7 +68,11 @@ var pause
         videoUrl = _video.src
         // console.log("video address changed")
         if (document.pictureInPictureElement) {
-          document.exitPictureInPicture()
+          if(!_video.src.startsWith('blob:https://www.youtube.com')){
+            // console.log('prepare to reenter pip')
+            document.exitPictureInPicture()
+          }
+          // console.log('directly reenter pip')
           _video.requestPictureInPicture()
         }
       }
