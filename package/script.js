@@ -6,6 +6,7 @@ var auto
 var pause
 
 (async () => {
+  // console.log("==start===")
   function inViewport(el) {
     let rect = el.getBoundingClientRect();
     return (
@@ -30,6 +31,22 @@ var pause
       return videos[0]
     }
   }
+
+  function executeAfterVideoReady(video, callback) {
+    if (video.readyState == 4) {
+      // HAVE_ENOUGH_DATA - enough data available to start playing
+      // console.log("video is ready")
+      callback()
+    } else {
+      // waiting video ready
+      // console.log("waiting video ready")
+      video.addEventListener("canplay", () => {
+        // console.log("can play")
+        callback()
+      }, { once: true })
+    }
+  }
+
   chrome.storage.local.get((result) => {
     list = result.list
     auto = result.auto
@@ -68,23 +85,37 @@ var pause
         videoUrl = _video.src
         // console.log("video address changed")
         if (document.pictureInPictureElement) {
-          if(!_video.src.startsWith('blob:https://www.youtube.com')){
-            // console.log('prepare to reenter pip')
-            document.exitPictureInPicture()
-          }
+
+          // console.log('prepare to reenter pip')
+          // ---------------------------------------------
+          // cannot exit here, scrip will loose permission
+          // document.exitPictureInPicture()
+          // ---------------------------------------------
           // console.log('directly reenter pip')
-          _video.requestPictureInPicture()
+          executeAfterVideoReady(_video, () => {
+            // console.log("start call back observe")
+            _video.requestPictureInPicture().catch((error) => {
+              console.log("fail PIP", error)
+            })
+          })
         }
       }
     }
   })
 
   if (document.pictureInPictureElement) {
+    // console.log("has PIP")
     await document.exitPictureInPicture();
   } else {
-    await video.requestPictureInPicture();
-    if (list) {
-      observerVideo.observe(document.querySelector('body'), { subtree: true, childList: true, attributes: true, attributeOldValue: false, characterDataOldValue: false })
-    }
+
+    executeAfterVideoReady(video, () => {
+      // console.log("start call back")
+      video.requestPictureInPicture().then(() => {
+        if (list) {
+          observerVideo.observe(document.querySelector('body'), { subtree: true, childList: true, attributes: true, attributeOldValue: false, characterDataOldValue: false })
+        }
+      })
+    })
+
   }
 })();
