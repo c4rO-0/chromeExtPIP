@@ -37,7 +37,7 @@ other browsers are unknown.
 - Open Chrome Extension Manager. Url address is : [chrome://extensions](chrome://extensions). Make sure the developer mod opening.
 ![](./readme/ins_step2_en.png)
 
-- Drag the downloaded zip file to the browser page. Done!
+- Drag the downloaded zip file to the browser page. Done! If need global shortcuts, please complete the setup steps.
 ![](./readme/ins_step3_en.png)
 
 

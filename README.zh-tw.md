@@ -37,7 +37,7 @@
 - 打開Chrome擴展管理頁面. 地址欄輸入 : [chrome://extensions](chrome://extensions). 並確保開發者模式已開啟.
 ![](./readme/ins_step2.png)
 
-- 將下載的zip文件拖拽到瀏覽器頁麵裡. 安裝完成.
+- 將下載的zip文件拖拽到瀏覽器頁麵裡. 安裝完成. 若要使用全局快捷鍵, 請完成設置步驟.
 ![](./readme/ins_step3.png)
 
 
