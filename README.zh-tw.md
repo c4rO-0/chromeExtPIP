@@ -1,6 +1,6 @@
 # chromeExtPIP
 
-[![GitHub All Releases](https://img.shields.io/github/downloads/c4rO-0/chromeExtPIP/total?label=Downloads&style=flat-square)](https://github.com/c4rO-0/chromeExtPIP/blob/master/README.zh-tw.md#%E5%AE%89%E8%A3%9D)
+[![GitHub All Releases](https://img.shields.io/github/downloads/c4rO-0/chromeExtPIP/total?label=Git%20Downloads&style=flat-square)](https://github.com/c4rO-0/chromeExtPIP/blob/master/README.zh-tw.md#%E5%AE%89%E8%A3%9D) [![Chrome Web Store](https://img.shields.io/chrome-web-store/users/banggcaohiaanmdkalekjcffjonamlkj?label=Chrome%20Users&style=flat-square)](https://github.com/c4rO-0/chromeExtPIP/blob/master/README.zh-tw.md#%E5%AE%89%E8%A3%9D)
 
 ---
 
@@ -30,7 +30,7 @@
 
 ### 商店
 
-- 點擊[鍊接](https://chrome.google.com/webstore/detail/%E5%B0%8F%E7%AA%97%E5%8F%A3%E8%A7%86%E9%A2%91-by-c4r/banggcaohiaanmdkalekjcffjonamlkj)進入chrome商店.
+- 點擊[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/banggcaohiaanmdkalekjcffjonamlkj?style=flat-square)](https://chrome.google.com/webstore/detail/%E5%B0%8F%E7%AA%97%E5%8F%A3%E8%A7%86%E9%A2%91-by-c4r/banggcaohiaanmdkalekjcffjonamlkj)進入chrome商店.
 - 點擊頁麵中的`添加至 Chrome`完成安裝.
 - 若要使用全局快捷鍵, 請完成設置步驟.
 

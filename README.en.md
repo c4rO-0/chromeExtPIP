@@ -1,6 +1,6 @@
 # chromeExtPIP
 
-[![GitHub All Releases](https://img.shields.io/github/downloads/c4rO-0/chromeExtPIP/total?label=Downloads&style=flat-square)](https://github.com/c4rO-0/chromeExtPIP/blob/master/README.en.md#installation)
+[![GitHub All Releases](https://img.shields.io/github/downloads/c4rO-0/chromeExtPIP/total?label=Git%20Downloads&style=flat-square)](https://github.com/c4rO-0/chromeExtPIP/blob/master/README.en.md#installation) [![Chrome Web Store](https://img.shields.io/chrome-web-store/users/banggcaohiaanmdkalekjcffjonamlkj?label=Chrome%20Users&style=flat-square)](https://github.com/c4rO-0/chromeExtPIP/blob/master/README.en.md#installation)
 
 ---
 
@@ -30,7 +30,7 @@ other browsers are unknown.
 
 ### Application Store
 
-- Click [link](https://chrome.google.com/webstore/detail/%E5%B0%8F%E7%AA%97%E5%8F%A3%E8%A7%86%E9%A2%91-by-c4r/banggcaohiaanmdkalekjcffjonamlkj) to enter store.
+- Click [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/banggcaohiaanmdkalekjcffjonamlkj?style=flat-square)](https://chrome.google.com/webstore/detail/%E5%B0%8F%E7%AA%97%E5%8F%A3%E8%A7%86%E9%A2%91-by-c4r/banggcaohiaanmdkalekjcffjonamlkj) to enter store.
 - Click `Add to Chrome` to install.
 - If need global shortcuts, please complete the setup steps.
 
