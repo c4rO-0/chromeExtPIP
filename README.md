@@ -28,14 +28,14 @@
 
 ## 安装
 
-### 商店
+### 商店（推荐）
 
 - 点击[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/banggcaohiaanmdkalekjcffjonamlkj?style=flat-square)](https://chrome.google.com/webstore/detail/%E5%B0%8F%E7%AA%97%E5%8F%A3%E8%A7%86%E9%A2%91-by-c4r/banggcaohiaanmdkalekjcffjonamlkj)进入chrome商店.
 - 点击页面中的`添加至 Chrome`完成安装.
-- 若要使用全局快捷键, 请完成设置步骤.
+- 若要使用全局快捷键, 请完成下面的设置步骤.
 
 
-### 安装包 
+### 安装包 （开发用）
 
 - 通过点击[![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/c4rO-0/chromeExtPIP?include_prereleases&style=flat-square)](https://github.com/c4rO-0/chromeExtPIP/releases/latest)找到最新版本, 并保存zip文件到本地.
 ![](./readme/ins_step1.png)

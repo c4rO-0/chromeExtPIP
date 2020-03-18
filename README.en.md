@@ -28,13 +28,13 @@ other browsers are unknown.
 
 ## Installation
 
-### Application Store
+### Application Store (recommended)
 
 - Click [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/banggcaohiaanmdkalekjcffjonamlkj?style=flat-square)](https://chrome.google.com/webstore/detail/%E5%B0%8F%E7%AA%97%E5%8F%A3%E8%A7%86%E9%A2%91-by-c4r/banggcaohiaanmdkalekjcffjonamlkj) to enter store.
 - Click `Add to Chrome` to install.
-- If need global shortcuts, please complete the setup steps.
+- If need global shortcuts, please complete the setup steps below.
 
-### Installation Package
+### Installation Package (for developers)
 
 - Click [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/c4rO-0/chromeExtPIP?include_prereleases&style=flat-square)](https://github.com/c4rO-0/chromeExtPIP/releases/latest) to get the latest release, and download the zip package to local.
 ![](./readme/ins_step1_en.png)
