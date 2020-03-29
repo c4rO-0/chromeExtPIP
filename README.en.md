@@ -82,3 +82,12 @@ Right-click the extension icon in the toolbar and select `option` to open the Op
 ## Use
 * Click the extension icon, and the video in the page will enter the small window (PIP) mode. Click again to exit.
 * After setting the global shortcut key, press Ctrl + ←  backward, Ctrl + → forward, Ctrl + ↑ volume up, Ctrl + ↓ volume down.
+
+
+---
+
+## support us
+### wechat (scan)
+![](./readme/wechat.png)
+### paypal (scan or click)
+[![](./readme/paypal.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GFW9CHDJQYZSE&source=url)

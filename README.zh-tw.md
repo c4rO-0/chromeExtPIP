@@ -82,3 +82,12 @@
 ## 運行
 * 點擊插件圖標, 網頁中的視頻會進入小窗口（pip）模式, 再次點擊退出.  
 * 設置好全局快捷鍵後, 按 Ctrl + ← 可以快退, Ctrl + → 快進, Ctrl + ↑ 音量增, Ctrl + ↓ 音量減.  
+
+
+---
+
+## 支持我們
+### 微信掃一掃
+![](./readme/wechat.png)
+### paypal (掃碼或點擊)
+[![](./readme/paypal.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GFW9CHDJQYZSE&source=url)
