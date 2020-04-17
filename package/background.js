@@ -9,28 +9,28 @@ if (!document.pictureInPictureEnabled) {
 
       // await chrome.tabs.executeScript(targetTab.id, { code: "(async ()=>{observerVideo.disconnect();if(document.pictureInPictureElement){let ePiP=document.pictureInPictureElement;await document.exitPictureInPicture();await ePiP.requestPictureInPicture();await document.exitPictureInPicture()}else{await document.exitPictureInPicture()}for(video of document.querySelectorAll('video')){video.pause()}})();", allFrames: true })
 
-      chrome.tabs.sendMessage(targetTab.id, { msg: "exitPIP" }, function (response) {
+      chrome.tabs.sendMessage(targetTab.id, { msg: "exitPIP-pause" }, function (response) {
 
         chrome.tabs.executeScript(tab.id, { file: 'script.js', allFrames: true })
         // .then(()=>{
-          targetTab = tab
-          chrome.storage.local.set({ targetTabId: tab.id })
+        targetTab = tab
+        chrome.storage.local.set({ targetTabId: tab.id })
         // })
 
       });
 
-    }else if(targetTab && targetTab.id == tab.id) {
+    } else if (targetTab && targetTab.id == tab.id) {
       chrome.tabs.sendMessage(tab.id, { msg: "exitPIP" }, function (response) {
 
-        if(response.res == 'exitPIP-video'){
+        if (response.res == 'exitPIP-video') {
           console.log('exitPIP-video')
 
-        }else if(response.res == 'exitPIP-nothing'){
+        } else if (response.res == 'exitPIP-nothing') {
           console.log('exitPIP-nothing')
           chrome.tabs.executeScript(tab.id, { file: 'script.js', allFrames: true })
           // .then(()=>{
-            targetTab = tab
-            chrome.storage.local.set({ targetTabId: tab.id })
+          targetTab = tab
+          chrome.storage.local.set({ targetTabId: tab.id })
           // })
         }
       });
@@ -154,7 +154,7 @@ chrome.runtime.onMessage.addListener(
       "from a content script:" + sender.tab.url :
       "from the extension");
     if (request.msg == "listener-ready") {
-      sendResponse({ rsp: "" , status: true});
+      sendResponse({ rsp: "", status: true });
       // chrome.tabs.sendMessage(sender.tab.id, {greeting: "hello"}, function(response) {});  
     }
 

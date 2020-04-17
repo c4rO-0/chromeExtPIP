@@ -89,7 +89,7 @@ var vPoster
     force = result.force
     // console.log(result)
   })
-  const video = queryVideo()
+  let video = queryVideo()
   if (video === 'noVideo')
     return
 
@@ -107,25 +107,26 @@ var vPoster
         console.log(sender.tab ?
           "from a content script:" + sender.tab.url :
           "from the extension");
-        if (request.msg == "exitPIP")
+        if (request.msg == "exitPIP" || request.msg == "exitPIP-pause")
           if (document.pictureInPictureElement) {
             console.log('msg : ext PIP')
             if (observerVideo) {
               observerVideo.disconnect()
             }
-            let ePiP = document.pictureInPictureElement
-            document.exitPictureInPicture()
-            // .then(()=>{
-            //   ePiP.requestPictureInPicture()
-            // }).then(()=>{
-            //   document.exitPictureInPicture()
-            // }).then(()=>{
-              sendResponse({ res: "exitPIP-video", status: true});
-            // })
-          }else{
+            document.exitPictureInPicture().then(() => {
+
+              if (request.msg == "exitPIP-pause") {
+                for (vi of document.querySelectorAll('video')) { vi.pause() }
+              }
+
+            })
+
+            sendResponse({ res: "exitPIP-video", status: true });
+
+          } else {
             sendResponse({ res: "exitPIP-nothing", status: true });
           }
-        
+
       });
 
     chrome.runtime.sendMessage({ msg: "listener-ready" }, function (response) {
@@ -154,7 +155,7 @@ var vPoster
 
   observerVideo = new MutationObserver(async (mutationList, observer) => {
     // console.log("mutationList" + count)
-    const _video = queryVideo()
+    let _video = queryVideo()
     if (_video !== 'noVideo') {
       if (videoUrl !== _video.src) {
         // console.log("videoUrl:" + videoUrl)
@@ -185,18 +186,8 @@ var vPoster
   })
 
   if (document.pictureInPictureElement) {
-    let ePiP = document.pictureInPictureElement
-    // ePiP.requestPictureInPicture().then(()=>{
-      document.exitPictureInPicture()
-    // })
-    
-    // .then(()=>{
-      // ePiP.requestPictureInPicture()
-    // }).then(()=>{
-    //   document.exitPictureInPicture()
-    // })
-    // await ePiP.requestPictureInPicture();
-    // await document.exitPictureInPicture();
+
+    document.exitPictureInPicture()
 
   } else {
 
