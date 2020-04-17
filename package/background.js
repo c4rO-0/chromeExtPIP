@@ -6,7 +6,7 @@ if (!document.pictureInPictureEnabled) {
 } else {
   chrome.browserAction.onClicked.addListener(async tab => {
     if (targetTab && targetTab.id !== tab.id) {
-      await chrome.tabs.executeScript(targetTab.id, { code: "(async ()=>{observerVideo.disconnect();for(video of document.querySelectorAll('video')){await document.exitPictureInPicture();video.pause();}})();", allFrames: true })
+      await chrome.tabs.executeScript(targetTab.id, { code: "(async ()=>{observerVideo.disconnect();if(document.pictureInPictureElement){let ePiP=document.pictureInPictureElement;await document.exitPictureInPicture();await ePiP.requestPictureInPicture();await document.exitPictureInPicture()}else{await document.exitPictureInPicture()}for(video of document.querySelectorAll('video')){video.pause()}})();", allFrames: true })
     }
     await chrome.tabs.executeScript({ file: 'script.js', allFrames: true });
     targetTab = tab
