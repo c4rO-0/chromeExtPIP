@@ -5,6 +5,10 @@ var list
 var auto
 var pause
 
+var v
+var vURL
+
+
 (async () => {
   // console.log("==start===")
   function inViewport(el) {
@@ -47,10 +51,28 @@ var pause
     }
   }
 
+  function addSourceToVideo(element, src, type) {
+    var source = document.createElement('source');
+
+    source.src = src;
+    source.type = type;
+
+    element.appendChild(source);
+}
+
+function videoUpdateTime(event){
+  if( event.target.duration -event.target.currentTime < 0.5 ){
+    console.log('timeupdate : ', event.target.currentTime, event.target.duration )
+    event.target.removeEventListener("timeupdate", videoUpdateTime);
+    v.requestPictureInPicture()
+  }
+}
+
   chrome.storage.local.get((result) => {
     list = result.list
     auto = result.auto
     pause = result.pause
+    force = result.force
     // console.log(result)
   })
   const video = queryVideo()
@@ -70,6 +92,10 @@ var pause
   videoUrl = video.src
   console.log(videoUrl)
 
+  v = document.createElement('video');
+  vURL = 'http://upload.wikimedia.org/wikipedia/commons/7/79/Big_Buck_Bunny_small.ogv'
+
+
   if (observerVideo) {
     console.log("disconnecting old observer")
     await observerVideo.disconnect()
@@ -83,10 +109,11 @@ var pause
         // console.log("videoUrl:" + videoUrl)
         // console.log("video.src:" + _video.src)
         videoUrl = _video.src
-        // console.log("video address changed")
+        
+        console.log("video address changed")
         if (document.pictureInPictureElement) {
 
-          // console.log('prepare to reenter pip')
+          console.log('prepare to reenter pip')
           // ---------------------------------------------
           // cannot exit here, scrip will loose permission
           // document.exitPictureInPicture()
@@ -94,7 +121,10 @@ var pause
           // console.log('directly reenter pip')
           executeAfterVideoReady(_video, () => {
             // console.log("start call back observe")
-            _video.requestPictureInPicture().catch((error) => {
+            _video.requestPictureInPicture().then(()=>{
+
+              _video.addEventListener('timeupdate', videoUpdateTime);
+            }).catch((error) => {
               console.log("fail PIP", error)
             })
           })
@@ -108,12 +138,20 @@ var pause
     await document.exitPictureInPicture();
   } else {
 
+    document.body.appendChild(v);
+
+    addSourceToVideo(v, vURL, 'video/ogg');
+
     executeAfterVideoReady(video, () => {
       // console.log("start call back")
       video.requestPictureInPicture().then(() => {
         if (list) {
           observerVideo.observe(document.querySelector('body'), { subtree: true, childList: true, attributes: true, attributeOldValue: false, characterDataOldValue: false })
         }
+        
+
+        video.addEventListener('timeupdate', videoUpdateTime);
+
       })
     })
 
