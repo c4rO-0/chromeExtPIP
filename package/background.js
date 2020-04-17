@@ -6,11 +6,44 @@ if (!document.pictureInPictureEnabled) {
 } else {
   chrome.browserAction.onClicked.addListener(async tab => {
     if (targetTab && targetTab.id !== tab.id) {
-      await chrome.tabs.executeScript(targetTab.id, { code: "(async ()=>{observerVideo.disconnect();if(document.pictureInPictureElement){let ePiP=document.pictureInPictureElement;await document.exitPictureInPicture();await ePiP.requestPictureInPicture();await document.exitPictureInPicture()}else{await document.exitPictureInPicture()}for(video of document.querySelectorAll('video')){video.pause()}})();", allFrames: true })
+
+      // await chrome.tabs.executeScript(targetTab.id, { code: "(async ()=>{observerVideo.disconnect();if(document.pictureInPictureElement){let ePiP=document.pictureInPictureElement;await document.exitPictureInPicture();await ePiP.requestPictureInPicture();await document.exitPictureInPicture()}else{await document.exitPictureInPicture()}for(video of document.querySelectorAll('video')){video.pause()}})();", allFrames: true })
+
+      chrome.tabs.sendMessage(targetTab.id, { msg: "exitPIP" }, function (response) {
+
+        chrome.tabs.executeScript(tab.id, { file: 'script.js', allFrames: true })
+        // .then(()=>{
+          targetTab = tab
+          chrome.storage.local.set({ targetTabId: tab.id })
+        // })
+
+      });
+
+    }else if(targetTab && targetTab.id == tab.id) {
+      chrome.tabs.sendMessage(tab.id, { msg: "exitPIP" }, function (response) {
+
+        if(response.res == 'exitPIP-video'){
+          console.log('exitPIP-video')
+
+        }else if(response.res == 'exitPIP-nothing'){
+          console.log('exitPIP-nothing')
+          chrome.tabs.executeScript(tab.id, { file: 'script.js', allFrames: true })
+          // .then(()=>{
+            targetTab = tab
+            chrome.storage.local.set({ targetTabId: tab.id })
+          // })
+        }
+      });
     }
-    await chrome.tabs.executeScript({ file: 'script.js', allFrames: true });
-    targetTab = tab
-    chrome.storage.local.set({ targetTabId: tab.id })
+    else {
+
+      chrome.tabs.executeScript(tab.id, { file: 'script.js', allFrames: true });
+      targetTab = tab
+      chrome.storage.local.set({ targetTabId: tab.id })
+    }
+
+
+
   });
 }
 /**
@@ -114,3 +147,15 @@ chrome.tabs.onUpdated.addListener((tabId, info, tab) => {
     chrome.browserAction.disable(tabId)
   }
 })
+
+chrome.runtime.onMessage.addListener(
+  function (request, sender, sendResponse) {
+    console.log(sender.tab ?
+      "from a content script:" + sender.tab.url :
+      "from the extension");
+    if (request.msg == "listener-ready") {
+      sendResponse({ rsp: "" , status: true});
+      // chrome.tabs.sendMessage(sender.tab.id, {greeting: "hello"}, function(response) {});  
+    }
+
+  });

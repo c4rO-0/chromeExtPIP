@@ -53,34 +53,34 @@ var vPoster
     }
   }
 
-//   function addSourceToVideo(element, src, type) {
-//     var source = document.createElement('source');
+  //   function addSourceToVideo(element, src, type) {
+  //     var source = document.createElement('source');
 
-//     source.src = src;
-//     source.type = type;
+  //     source.src = src;
+  //     source.type = type;
 
-//     element.appendChild(source);
-// }
+  //     element.appendChild(source);
+  // }
 
-function addSourceToVideo(element, src) {
-  element.src = src
-  // element.setAttribute('preload', 'auto')
-}
-
-function addPosterToVideo(element, src){
-  element.setAttribute('poster', src)
-}
-
-function videoUpdateTime(event){
-  if( event.target.duration -event.target.currentTime < 0.5 ){
-    console.log('timeupdate : ', event.target.currentTime, event.target.duration )
-    event.target.removeEventListener("timeupdate", videoUpdateTime);
-    executeAfterVideoReady(document.getElementById('c4r-video'), () => {
-      document.getElementById('c4r-video').requestPictureInPicture()
-    })
-    
+  function addSourceToVideo(element, src) {
+    element.src = src
+    element.setAttribute('preload', 'auto')
   }
-}
+
+  function addPosterToVideo(element, src) {
+    element.setAttribute('poster', src)
+  }
+
+  function videoUpdateTime(event) {
+    if (event.target.duration - event.target.currentTime < 0.5) {
+      console.log('timeupdate : ', event.target.currentTime, event.target.duration)
+      event.target.removeEventListener("timeupdate", videoUpdateTime);
+      executeAfterVideoReady(document.getElementById('c4r-video'), () => {
+        document.getElementById('c4r-video').requestPictureInPicture()
+      })
+
+    }
+  }
 
   chrome.storage.local.get((result) => {
     list = result.list
@@ -100,6 +100,39 @@ function videoUpdateTime(event){
   }
   console.log(count)
 
+  if (count == 1) {
+
+    chrome.runtime.onMessage.addListener(
+      function (request, sender, sendResponse) {
+        console.log(sender.tab ?
+          "from a content script:" + sender.tab.url :
+          "from the extension");
+        if (request.msg == "exitPIP")
+          if (document.pictureInPictureElement) {
+            console.log('msg : ext PIP')
+            if (observerVideo) {
+              observerVideo.disconnect()
+            }
+            let ePiP = document.pictureInPictureElement
+            document.exitPictureInPicture()
+            // .then(()=>{
+            //   ePiP.requestPictureInPicture()
+            // }).then(()=>{
+            //   document.exitPictureInPicture()
+            // }).then(()=>{
+              sendResponse({ res: "exitPIP-video", status: true});
+            // })
+          }else{
+            sendResponse({ res: "exitPIP-nothing", status: true });
+          }
+        
+      });
+
+    chrome.runtime.sendMessage({ msg: "listener-ready" }, function (response) {
+      console.log(response.rsp);
+    });
+  }
+
   if (videoUrl) {
     console.log(videoUrl)
   }
@@ -113,8 +146,8 @@ function videoUpdateTime(event){
 
   if (observerVideo) {
     console.log("disconnecting old observer")
-    await observerVideo.disconnect()
-    for(vi of document.querySelectorAll('video')){
+    observerVideo.disconnect()
+    for (vi of document.querySelectorAll('video')) {
       vi.removeEventListener("timeupdate", videoUpdateTime);
     }
   }
@@ -127,7 +160,7 @@ function videoUpdateTime(event){
         // console.log("videoUrl:" + videoUrl)
         // console.log("video.src:" + _video.src)
         videoUrl = _video.src
-        
+
         console.log("video address changed")
         if (document.pictureInPictureElement) {
 
@@ -139,7 +172,7 @@ function videoUpdateTime(event){
           // console.log('directly reenter pip')
           executeAfterVideoReady(_video, () => {
             // console.log("start call back observe")
-            _video.requestPictureInPicture().then(()=>{
+            _video.requestPictureInPicture().then(() => {
 
               _video.addEventListener('timeupdate', videoUpdateTime);
             }).catch((error) => {
@@ -152,21 +185,29 @@ function videoUpdateTime(event){
   })
 
   if (document.pictureInPictureElement) {
-    console.log("has PIP")
     let ePiP = document.pictureInPictureElement
-    // await document.pictureInPictureElement.requestPictureInPicture()
-    await document.exitPictureInPicture();
-    await ePiP.requestPictureInPicture()
-    await document.exitPictureInPicture();
+    // ePiP.requestPictureInPicture().then(()=>{
+      document.exitPictureInPicture()
+    // })
+    
+    // .then(()=>{
+      // ePiP.requestPictureInPicture()
+    // }).then(()=>{
+    //   document.exitPictureInPicture()
+    // })
+    // await ePiP.requestPictureInPicture();
+    // await document.exitPictureInPicture();
+
   } else {
 
-    if(! document.getElementById('c4r-video')){
+
+    if (!document.getElementById('c4r-video')) {
       v = document.createElement('video')
       document.body.appendChild(v);
-  
-      v.setAttribute('id','c4r-video')
+
+      v.setAttribute('id', 'c4r-video')
       addSourceToVideo(document.getElementById('c4r-video'), vURL);
-      addPosterToVideo(document.getElementById('c4r-video'),vPoster)
+      addPosterToVideo(document.getElementById('c4r-video'), vPoster)
     }
 
 
@@ -181,6 +222,7 @@ function videoUpdateTime(event){
 
       })
     })
+
 
   }
 })();
