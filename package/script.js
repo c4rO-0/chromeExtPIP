@@ -7,6 +7,7 @@ var pause
 
 var v
 var vURL
+var vPoster
 
 
 (async () => {
@@ -24,6 +25,7 @@ var vURL
     const videos = Array.from(document.querySelectorAll('video'))
       .filter(video => video.readyState != 0)
       .filter(video => video.disablePictureInPicture == false)
+      .filter(video => video.id != 'c4r-video')
       .sort((v1, v2) => {
         const v1Rect = v1.getClientRects()[0];
         const v2Rect = v2.getClientRects()[0];
@@ -51,20 +53,32 @@ var vURL
     }
   }
 
-  function addSourceToVideo(element, src, type) {
-    var source = document.createElement('source');
+//   function addSourceToVideo(element, src, type) {
+//     var source = document.createElement('source');
 
-    source.src = src;
-    source.type = type;
+//     source.src = src;
+//     source.type = type;
 
-    element.appendChild(source);
+//     element.appendChild(source);
+// }
+
+function addSourceToVideo(element, src) {
+  element.src = src
+  // element.setAttribute('preload', 'auto')
+}
+
+function addPosterToVideo(element, src){
+  element.setAttribute('poster', src)
 }
 
 function videoUpdateTime(event){
   if( event.target.duration -event.target.currentTime < 0.5 ){
     console.log('timeupdate : ', event.target.currentTime, event.target.duration )
     event.target.removeEventListener("timeupdate", videoUpdateTime);
-    v.requestPictureInPicture()
+    executeAfterVideoReady(document.getElementById('c4r-video'), () => {
+      document.getElementById('c4r-video').requestPictureInPicture()
+    })
+    
   }
 }
 
@@ -92,13 +106,17 @@ function videoUpdateTime(event){
   videoUrl = video.src
   console.log(videoUrl)
 
-  v = document.createElement('video');
-  vURL = 'http://upload.wikimedia.org/wikipedia/commons/7/79/Big_Buck_Bunny_small.ogv'
+  vURL = chrome.extension.getURL('/assets/c4r.mp4')
+  // vURL = 'http://upload.wikimedia.org/wikipedia/commons/7/79/Big_Buck_Bunny_small.ogv'
+  vPoster = chrome.extension.getURL('/assets/c4r.png')
 
 
   if (observerVideo) {
     console.log("disconnecting old observer")
     await observerVideo.disconnect()
+    for(vi of document.querySelectorAll('video')){
+      vi.removeEventListener("timeupdate", videoUpdateTime);
+    }
   }
 
   observerVideo = new MutationObserver(async (mutationList, observer) => {
@@ -134,13 +152,20 @@ function videoUpdateTime(event){
   })
 
   if (document.pictureInPictureElement) {
-    // console.log("has PIP")
+    console.log("has PIP")
+    await document.pictureInPictureElement.requestPictureInPicture()
     await document.exitPictureInPicture();
   } else {
 
-    document.body.appendChild(v);
+    if(! document.getElementById('c4r-video')){
+      v = document.createElement('video')
+      document.body.appendChild(v);
+  
+      v.setAttribute('id','c4r-video')
+      addSourceToVideo(document.getElementById('c4r-video'), vURL);
+      addPosterToVideo(document.getElementById('c4r-video'),vPoster)
+    }
 
-    addSourceToVideo(v, vURL, 'video/ogg');
 
     executeAfterVideoReady(video, () => {
       // console.log("start call back")
@@ -148,7 +173,6 @@ function videoUpdateTime(event){
         if (list) {
           observerVideo.observe(document.querySelector('body'), { subtree: true, childList: true, attributes: true, attributeOldValue: false, characterDataOldValue: false })
         }
-        
 
         video.addEventListener('timeupdate', videoUpdateTime);
 

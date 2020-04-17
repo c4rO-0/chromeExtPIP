@@ -58,6 +58,10 @@
     "<all_urls>",
     "storage"
   ],
+  "web_accessible_resources": [
+    "assets/*.mp4",
+    "assets/*.png"
+  ],
   "minimum_chrome_version": "69.0.3483.0",
   "manifest_version": 2
 }
