@@ -153,7 +153,10 @@ function videoUpdateTime(event){
 
   if (document.pictureInPictureElement) {
     console.log("has PIP")
-    await document.pictureInPictureElement.requestPictureInPicture()
+    let ePiP = document.pictureInPictureElement
+    // await document.pictureInPictureElement.requestPictureInPicture()
+    await document.exitPictureInPicture();
+    await ePiP.requestPictureInPicture()
     await document.exitPictureInPicture();
   } else {
 
