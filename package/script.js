@@ -75,9 +75,9 @@ var vPoster
     if (event.target.duration - event.target.currentTime < 0.5) {
       console.log('timeupdate : ', event.target.currentTime, event.target.duration)
       event.target.removeEventListener("timeupdate", videoUpdateTime);
-      executeAfterVideoReady(document.getElementById('c4r-video'), () => {
-        document.getElementById('c4r-video').requestPictureInPicture()
-      })
+      // executeAfterVideoReady(document.getElementById('c4r-video'), () => {
+      //   document.getElementById('c4r-video').requestPictureInPicture()
+      // })
 
     }
   }
