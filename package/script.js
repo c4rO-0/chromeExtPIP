@@ -197,6 +197,7 @@ var vPoster
       document.body.appendChild(v);
 
       v.setAttribute('id', 'c4r-video')
+      v.setAttribute('style', 'display: none;')
       addSourceToVideo(document.getElementById('c4r-video'), vURL);
       addPosterToVideo(document.getElementById('c4r-video'), vPoster)
     }
