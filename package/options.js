@@ -1,3 +1,6 @@
+document.getElementById("saving").style.display = "none";
+document.getElementById("ok").style.display = "block";
+
 chrome.storage.local.get({ time: 5, volume: 5, auto: true, pause: false, list: false }, results => {
   const targetTime = document.querySelector('#time')
   const targetVolume = document.querySelector('#volume')
@@ -13,6 +16,15 @@ chrome.storage.local.get({ time: 5, volume: 5, auto: true, pause: false, list: f
   // targetPause.checked = results.pause
   targetlist.checked = results.list
   targetOk.addEventListener('click', () => {
+
+    document.getElementById("saving").style.display = "block";
+    document.getElementById("ok").style.display = "none";
+
+    setTimeout(() => {
+      document.getElementById("saving").style.display = "none";
+      document.getElementById("ok").style.display = "block";
+    }, 1000);
+
     chrome.storage.local.set({
       time: targetTime.value,
       volume: targetVolume.value,
