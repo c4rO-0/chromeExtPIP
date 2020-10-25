@@ -3,7 +3,7 @@
         "message": "Picture-in-Picture Extension by c4r"
     },
     "appDescription": {
-        "message": "WebExtension version of one of our tampermonkey script, https://greasyfork.org/en/scripts/377497-%E5%B0%8F%E7%AA%97%E5%8F%A3%E8%A7%86%E9%A2%91-bili-mgtv-youtube"
+        "message": "Picture-in-Picture with shortcuts control."
     },
     "backward": {
         "message": "backward"
@@ -37,5 +37,8 @@
     },
     "ok": {
         "message": "ok"
+    },
+    "saving": {
+        "message": "saving..."
     }
 }

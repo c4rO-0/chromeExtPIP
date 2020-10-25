@@ -49,13 +49,17 @@ if (!document.pictureInPictureEnabled) {
 /**
  * default settings
  */
-chrome.storage.local.set({
-  time: 5,
-  volume: 5,
-  auto: true,
-  pause: true,
-  list: true
+chrome.storage.local.get( { time: 5, volume: 5, auto: true, pause: true, list: true }, results => {
+  chrome.storage.local.set({
+    time  : results.time  , 
+    volume: results.volume, 
+    auto  : results.auto  , 
+    pause : results.pause , 
+    list  : results.list  ,
+  })
 })
+
+
 
 chrome.storage.local.get({ time: 5, volume: 5 }, result => {
   time = result.time
