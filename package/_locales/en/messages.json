@@ -17,6 +17,12 @@
     "volumeDown": {
         "message": "volume down"
     },
+    "exit": {
+        "message": "exit Picture-in-Picture mode"
+    },
+    "reopen": {
+        "message": "reopen Picture-in-Picture mode"
+    },
     "playPause": {
         "message": "play and pause"
     },

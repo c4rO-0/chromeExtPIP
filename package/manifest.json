@@ -40,6 +40,12 @@
     "volumeDown": {
       "description": "__MSG_volumeDown__"
     },
+    "exit": {
+      "description": "__MSG_exit__"
+    },
+    "reopen": {
+      "description": "__MSG_reopen__"
+    },
     "play": {
       "description": "__MSG_playPause__",
       "suggested_key": {
