@@ -17,6 +17,12 @@
     "volumeDown": {
         "message": "音量减"
     },
+    "exit": {
+        "message": "退出小窗口模式"
+    },
+    "reopen": {
+        "message": "重新打开小窗口模式"
+    },
     "playPause": {
         "message": "播放暂停"
     },

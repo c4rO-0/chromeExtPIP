@@ -68,6 +68,12 @@ chrome.commands.onCommand.addListener(cmd => {
         case "play":
           chrome.tabs.executeScript(result.targetTabId, { code: "try{if(document.getElementsByTagName('video')[0].paused){document.getElementsByTagName('video')[0].play()}else{document.getElementsByTagName('video')[0].pause()}}catch(err){}", allFrames: true })
           break
+        case "exit":
+          chrome.tabs.executeScript(result.targetTabId, { code: "try{document.exitPictureInPicture()}catch(err){}", allFrames: true })
+          break
+        case "reopen":
+          chrome.tabs.executeScript(result.targetTabId, { file: 'script.js', allFrames: true })
+          break
       }
     }
   })
@@ -118,3 +124,15 @@ chrome.tabs.onUpdated.addListener((tabId, info, tab) => {
     chrome.browserAction.disable(tabId)
   }
 })
+
+/**
+ * reset variable when close tab
+ */
+chrome.tabs.onRemoved.addListener((tabId) => {
+  chrome.storage.local.get("targetTabId", ({targetTabId}) => {
+    if(tabId === targetTabId) {
+      targetTab = null;
+      chrome.storage.local.set({ targetTabId: null });
+    }
+  });
+});
