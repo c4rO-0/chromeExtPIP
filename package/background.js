@@ -125,10 +125,14 @@ chrome.tabs.onUpdated.addListener((tabId, info, tab) => {
   }
 })
 
-
+/**
+ * reset variable when close tab
+ */
 chrome.tabs.onRemoved.addListener((tabId) => {
-  if(tabId === tab.tabId) {
-    targetTab = null
-    chrome.storage.local.set({ targetTabId: null })
-  }
-})
+  chrome.storage.local.get("targetTabId", ({targetTabId}) => {
+    if(tabId === targetTabId) {
+      targetTab = null;
+      chrome.storage.local.set({ targetTabId: null });
+    }
+  });
+});
